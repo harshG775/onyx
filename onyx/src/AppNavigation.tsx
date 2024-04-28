@@ -1,5 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { AntDesign } from '@expo/vector-icons';
 
 // BottomTab navigation
 
@@ -17,7 +17,7 @@ function BottomTabNavigator() {
             <BottomTab.Screen
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <Ionicons name="home" size={20} color={color} />
+                        <AntDesign name="home" size={24} color={color} />
                     ),
                 }}
                 name="Home"
@@ -26,7 +26,7 @@ function BottomTabNavigator() {
             <BottomTab.Screen
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <Ionicons name="search" size={20} color={color} />
+                        <AntDesign name="search1" size={20} color={color} />
                     ),
                 }}
                 name="Search"
@@ -36,7 +36,7 @@ function BottomTabNavigator() {
                 name="Downloads"
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <Ionicons name="download" size={20} color={color} />
+                        <AntDesign name="download" size={20} color={color} />
                     ),
                 }}
                 component={Home}
@@ -44,7 +44,7 @@ function BottomTabNavigator() {
             <BottomTab.Screen
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <Ionicons name="settings" size={20} color={color} />
+                        <AntDesign name="setting" size={20} color={color} />
                     ),
                 }}
                 name="Settings"
