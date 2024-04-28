@@ -1,19 +1,15 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
 
 // BottomTab navigation
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 const BottomTab = createBottomTabNavigator();
 import Home from "@/screens/Home";
-
+import Search from "@/screens/Search";
 function BottomTabNavigator() {
     return (
-        <BottomTab.Navigator
-            screenOptions={{
-                headerShown: false,
-            }}
-        >
+        <BottomTab.Navigator>
             <BottomTab.Screen
                 options={{
                     tabBarIcon: ({ color }) => (
@@ -28,9 +24,10 @@ function BottomTabNavigator() {
                     tabBarIcon: ({ color }) => (
                         <AntDesign name="search1" size={20} color={color} />
                     ),
+                    headerShown: false,
                 }}
                 name="Search"
-                component={Home}
+                component={Search}
             />
             <BottomTab.Screen
                 name="Downloads"
@@ -39,7 +36,7 @@ function BottomTabNavigator() {
                         <AntDesign name="download" size={20} color={color} />
                     ),
                 }}
-                component={Home}
+                component={Search}
             />
             <BottomTab.Screen
                 options={{
@@ -48,7 +45,7 @@ function BottomTabNavigator() {
                     ),
                 }}
                 name="Settings"
-                component={Home}
+                component={Search}
             />
         </BottomTab.Navigator>
     );
@@ -60,7 +57,11 @@ const Stack = createNativeStackNavigator();
 function StackNavigator() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="LOGO" component={BottomTabNavigator} />
+            <Stack.Screen
+                options={{ headerShown: false }}
+                name="LOGO"
+                component={BottomTabNavigator}
+            />
         </Stack.Navigator>
     );
 }
