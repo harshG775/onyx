@@ -1,4 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 // BottomTab navigation
 
@@ -13,10 +14,42 @@ function BottomTabNavigator() {
                 headerShown: false,
             }}
         >
-            <BottomTab.Screen name="Home" component={Home} />
-            <BottomTab.Screen name="Discover" component={Home} />
-            <BottomTab.Screen name="List" component={Home} />
-            <BottomTab.Screen name="Settings" component={Home} />
+            <BottomTab.Screen
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <Ionicons name="home" size={20} color={color} />
+                    ),
+                }}
+                name="Home"
+                component={Home}
+            />
+            <BottomTab.Screen
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <Ionicons name="search" size={20} color={color} />
+                    ),
+                }}
+                name="Search"
+                component={Home}
+            />
+            <BottomTab.Screen
+                name="Downloads"
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <Ionicons name="download" size={20} color={color} />
+                    ),
+                }}
+                component={Home}
+            />
+            <BottomTab.Screen
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <Ionicons name="settings" size={20} color={color} />
+                    ),
+                }}
+                name="Settings"
+                component={Home}
+            />
         </BottomTab.Navigator>
     );
 }
