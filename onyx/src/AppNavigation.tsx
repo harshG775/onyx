@@ -52,6 +52,7 @@ function BottomTabNavigator() {
 }
 // BottomTab navigation
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Info from "@/screens/info/Info";
 const Stack = createNativeStackNavigator();
 
 function StackNavigator() {
@@ -62,6 +63,11 @@ function StackNavigator() {
                 name="LOGO"
                 component={BottomTabNavigator}
             />
+            <Stack.Screen
+                name="Info"
+                component={Info}
+            />
+            
         </Stack.Navigator>
     );
 }
