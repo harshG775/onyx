@@ -1,7 +1,15 @@
 import { Consumet } from "@/lib/Axios_server";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { View, Text, Image, ScrollView, Pressable, TouchableOpacity } from "react-native";
+import {
+    View,
+    Text,
+    Image,
+    ScrollView,
+    Pressable,
+    TouchableOpacity,
+    ActivityIndicator,
+} from "react-native";
 export default function Home() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -29,7 +37,7 @@ export default function Home() {
             <Text style={{ padding: 10, fontWeight: "bold", fontSize: 20 }}>
                 Top Airing
             </Text>
-            {loading && <Text>Loading...</Text>}
+            {loading && <ActivityIndicator size="large" color="#0000ff" />}
             {error && <Text>Error</Text>}
             {topAiringAnime &&
                 topAiringAnime.results.map((item: any) => (
@@ -38,9 +46,6 @@ export default function Home() {
         </ScrollView>
     );
 }
-
-
-
 
 type AnimeListItemType = {
     item: {
@@ -51,16 +56,16 @@ type AnimeListItemType = {
         episodeNumber: number;
         genres: string[];
     };
-}
+};
 function AnimeListItem({ item }: AnimeListItemType) {
-    const navigation = useNavigation()
-    const { id, image, title, episodeId, episodeNumber, genres } = item
+    const navigation = useNavigation();
+    const { id, image, title, episodeId, episodeNumber, genres } = item;
     return (
         <TouchableOpacity
             activeOpacity={0.8}
             // @ts-ignore //TODO
             onPress={() => navigation.navigate("Info", { id: id })}
-            >
+        >
             <View
                 style={{
                     flexDirection: "row",
@@ -76,7 +81,11 @@ function AnimeListItem({ item }: AnimeListItemType) {
                 <View style={{ flex: 2 }}>
                     <Text>{title}</Text>
                     <View
-                        style={{ flexDirection: "row", flexWrap: "wrap", gap: 5 }}
+                        style={{
+                            flexDirection: "row",
+                            flexWrap: "wrap",
+                            gap: 5,
+                        }}
                     >
                         {genres.map((genre: any) => (
                             <Text
@@ -94,7 +103,6 @@ function AnimeListItem({ item }: AnimeListItemType) {
                     <Text id={episodeId}>Episode {episodeNumber}</Text>
                 </View>
             </View>
-
         </TouchableOpacity>
     );
 }

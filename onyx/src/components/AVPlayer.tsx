@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { Video, ResizeMode } from "expo-av";
 import { useRef } from "react";
 
@@ -6,6 +6,7 @@ export default function Player({ source }: { source: string }) {
     const video = useRef(null);
     return (
         <View style={styles.container}>
+            {/* <Text>Player</Text> */}
             <Video
                 ref={video}
                 style={styles.video}
@@ -15,7 +16,9 @@ export default function Player({ source }: { source: string }) {
                 useNativeControls
                 resizeMode={ResizeMode.CONTAIN}
                 isLooping
-                
+                onFullscreenUpdate={() => {
+                    console.log("onFullscreenUpdate");
+                }}
                 // onPlaybackStatusUpdate={}
             />
         </View>
