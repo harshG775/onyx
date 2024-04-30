@@ -58,6 +58,7 @@ function AnimeListItem({ item }: AnimeListItemType) {
     return (
         <TouchableOpacity
             activeOpacity={0.8}
+            // @ts-ignore //TODO
             onPress={() => navigation.navigate("Info", { id: id })}
             >
             <View

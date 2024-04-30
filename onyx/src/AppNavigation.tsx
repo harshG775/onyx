@@ -53,6 +53,7 @@ function BottomTabNavigator() {
 // BottomTab navigation
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Info from "@/screens/info/Info";
+import Player from "./screens/info/Player";
 const Stack = createNativeStackNavigator();
 
 function StackNavigator() {
@@ -66,6 +67,10 @@ function StackNavigator() {
             <Stack.Screen
                 name="Info"
                 component={Info}
+            />
+            <Stack.Screen
+                name="Player"
+                component={Player}
             />
             
         </Stack.Navigator>

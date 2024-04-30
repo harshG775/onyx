@@ -1,7 +1,9 @@
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Consumet } from "@/lib/Axios_server";
+import { useNavigation } from "@react-navigation/native";
 export default function Info({ route }: any) {
+    const navigation = useNavigation();
     const { id } = route.params;
     if (id === undefined) {
         console.log("anime id not found");
@@ -36,7 +38,7 @@ export default function Info({ route }: any) {
         return <Text>Error</Text>;
     }
     return (
-        <ScrollView style={{flex: 1, padding: 10 }}>
+        <ScrollView style={{ flex: 1, padding: 10 }}>
             <Image
                 style={{ flex: 1, width: 100, height: 100 }}
                 source={{ uri: animeData?.image }}
@@ -48,7 +50,15 @@ export default function Info({ route }: any) {
             <Text>Episodes {animeData?.totalEpisodes}</Text>
             <ScrollView>
                 {animeData?.episodes.map((episode: any) => (
-                    <Text style={{ padding: 10 }} key={episode.id}>{episode.number}</Text>
+                    <TouchableOpacity
+                        activeOpacity={0.8}
+                        // @ts-ignore //TODO
+                        onPress={() => navigation.navigate("Player", { episodeId: episode.id })}
+                        style={{ padding: 10 }}
+                        key={episode.id}
+                    >
+                        <Text>{episode.number}</Text>
+                    </TouchableOpacity>
                 ))}
             </ScrollView>
         </ScrollView>
